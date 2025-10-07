@@ -9,27 +9,32 @@ public class Assignment1 {
         
         return str+" "+toAppend;
     } 
-    //Methord to count the number of word in the Syring 
+    //Method to count the number of word in the Syring 
     public static int count(String str)
     {
-       int length=str.length();
-       int count=0;
-       for(int i=0;i<length;i++)
-       {
+       int count = 0;
+    boolean inWord = false;
+
+    for (int i = 0; i < str.length(); i++)
+    {
         char c = str.charAt(i);
-        //if condition for skipping spaces 
-        if(c!=' ')
+
+        if (c != ' ' && !inWord)
         {
+            // Start of a new word
+            inWord = true;
             count++;
-
         }
-        
-
-       }
-       return count;
+        else if (c == ' ')
+        {
+            // End of a word
+            inWord = false;
+        }
+    }
+    return count;
 
     }
-    //Methord to replace a word in the string with a new word
+    //Method to replace a word in the string with a new word
     public static String replace(String str,String oldword,String newword)
     {
         String result = "";
@@ -50,16 +55,19 @@ public class Assignment1 {
             }
         }
         //The for loop only processes words that are followed by a space. The last word in the string
-        if (temp.equals(oldword)) {
-            result = result + newword;
-        } else {
-            result = result + temp;
+        if (temp.equals(oldword)) 
+        {
+            
+        } 
+        else if (!temp.isEmpty()) 
+        {
+            result += temp + " ";
         }
 
     return result;
     }
 
-    //Methord to check if the give string is palindrome or not 
+    //Method to check if the give string is palindrome or not 
     public static Boolean isPalindrome(String str)
     {
         
@@ -79,7 +87,7 @@ public class Assignment1 {
         }
         return true;
     }
-    //Methord to splice the give string form the start point given
+    //Method to splice the give string form the start point given
     public static String splice(String str, int start, int length) 
     {
         
@@ -92,7 +100,7 @@ public class Assignment1 {
         }
         return result;
     }
-    //Methord to split the give string according to spaces
+    //Method to split the give string according to spaces
     public static void split(String str)
     {
         String word = "";
@@ -119,7 +127,7 @@ public class Assignment1 {
             System.out.println(word);
         }
     }
-    //Methord to find the char that is rpeated maximum time
+    //Method to find the char that is rpeated maximum time
     public static char MaxRepeatingCharacter(String str)
     {
         int maxCount = 0;
@@ -138,7 +146,7 @@ public class Assignment1 {
         return maxChar;
     }
     
-    //Methord to sort the given String according to alphabetical order
+    //Method to sort the given String according to alphabetical order
     public static String sort(String str) {
         char[] arr = str.toCharArray();
         //Bubble sorting
@@ -166,7 +174,7 @@ public class Assignment1 {
         for (int i = 0; i < n; i++) shifted += str.charAt(i);
         return shifted;
     }
-    //Methord to reverse the given string 
+    //Method to reverse the given string 
     public static String reverse(String str) {
         String rev = "";//Take an another string
         for (int i = str.length() - 1; i >= 0; i--) {
@@ -270,6 +278,7 @@ public class Assignment1 {
                 
                 
                 case 12:
+                    sc.close();
                     return;
 
                 default:
